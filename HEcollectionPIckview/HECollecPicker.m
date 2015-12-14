@@ -23,29 +23,6 @@
 }
 
 
-//- (void)collectionView:(CGRect)frame{
-//
-//    CGFloat w = frame.size.width;
-//    CGFloat h = frame.size.width;
-//    CGRect rect = CGRectMake(0, 0, w, h);
-//    
-//    
-//    
-//    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:rect collectionViewLayout:[[HEFoodLayout alloc] init]];
-//    collectionView.dataSource = self;
-//    collectionView.delegate = self;
-//    [collectionView registerNib:[UINib nibWithNibName:@"HEFoodPickCell" bundle:nil] forCellWithReuseIdentifier:@"cell"];
-//    [self addSubview:collectionView];
-//    self.collectionView = collectionView;
-//    
-//
-//}
-//
-//- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-//
-//    return 10;
-//    
-//}
 
 
 - (void)view1 {
@@ -73,7 +50,7 @@
 #pragma mark - <UICollectionViewDataSource>
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 5;
+    return 2000;
 }
 
 
@@ -81,7 +58,8 @@
 {
     HEFoodPickCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:@"cell" forIndexPath:indexPath];
     //    cell.image = self.images[indexPath.item];
-    cell.cellLabel.text =[NSString stringWithFormat:@"%ld",(long)indexPath.row];
+    cell.cellLabel.text =[NSString stringWithFormat:@"%ld", (long)indexPath.row] ;
+    cell.cellLabel.adjustsFontSizeToFitWidth =YES;
     cell.cellLabel.textColor =[UIColor blackColor];
     
     return cell;
@@ -102,7 +80,7 @@
     HEFoodPickCell *cell1 = (HEFoodPickCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:scrollView.contentOffset.x/40+1 inSection:0]];
     HEFoodPickCell *cell2 = (HEFoodPickCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:scrollView.contentOffset.x/40-1 inSection:0]];
     
-    NSLog(@"%@",cell.cellLabel.text);
+    NSLog(@"=======%@",cell.cellLabel.text);
     cell.cellLabel.textColor =[UIColor redColor];
     
     

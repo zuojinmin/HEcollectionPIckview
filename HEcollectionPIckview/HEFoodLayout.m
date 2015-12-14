@@ -52,9 +52,9 @@
 }
 
 /** 有效距离:当item的中间x距离屏幕的中间x在HMActiveDistance以内,才会开始放大, 其它情况都是缩小 */
-static CGFloat const HMActiveDistance = 100;
+
 /** 缩放因素: 值越大, item就会越大 */
-static CGFloat const HMScaleFactor = 0.6;
+static CGFloat const HEScaleFactor = 0.6;
 - (NSArray *)layoutAttributesForElementsInRect:(CGRect)rect
 {
     // 0.计算可见的矩形框
@@ -77,9 +77,10 @@ static CGFloat const HMScaleFactor = 0.6;
         
         // 差距越小, 缩放比例越大
         // 根据跟屏幕最中间的距离计算缩放比例
-        CGFloat scale = 1 + HMScaleFactor * (1 - (ABS(itemCenterX - centerX) / 25));
+        CGFloat scale = 1 + HEScaleFactor * (1 - (ABS(itemCenterX - centerX) / 25));
         //        attrs.transform = CGAffineTransformMakeScale(scale*1.3, scale*1.3);
         attrs.transform3D =CATransform3DMakeScale(scale*1.2, scale*1.2, scale*1.2);
+        NSLog(@"=====f===%f",attrs.center.y);
     }
     
     return array;
